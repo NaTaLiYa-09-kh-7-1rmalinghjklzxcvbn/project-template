@@ -3,11 +3,14 @@ import { renderBlock } from './lib.js'
 // @ts-ignore
 import moment from '../node_modules/moment/dist/moment.js';
 
+export const arrivalDay = moment().add(1, 'days').format('YYYY-MM-DD')
+export const departDay = moment(arrivalDay).add(2, 'days').format('YYYY-MM-DD')
 export function renderSearchFormBlock() {
   const dateNow = moment().format('YYYY-MM-DD');
-  const arrivalDay = moment().add(1, 'days').format('YYYY-MM-DD')
-  const departDay = moment(arrivalDay).add(2, 'days').format('YYYY-MM-DD')
+
   const lastDay = moment().startOf('month').add(2, 'months').add(-1, 'days').format('YYYY-MM-DD')
+  // const arrday = document.querySelector<HTMLInputElement>("check-in-date")
+  // console.log(arrday);
 
   renderBlock(
     'search-form-block',
@@ -17,13 +20,13 @@ export function renderSearchFormBlock() {
         <div class="row">
           <div>
             <label for="city">Город</label>
-            <input id="city" type="text" disabled value="Санкт-Петербург" />
+            <input id="city" type="text" name="city" value="Санкт-Петербург" />
             <input type="hidden" disabled value="59.9386,30.3141" />
           </div>
-          <!--<div class="providers">
+          <div class="providers">
             <label><input type="checkbox" name="provider" value="homy" checked /> Homy</label>
             <label><input type="checkbox" name="provider" value="flat-rent" checked /> FlatRent</label>
-          </div>--!>
+          </div>
         </div>
         <div class="row">
           <div>
