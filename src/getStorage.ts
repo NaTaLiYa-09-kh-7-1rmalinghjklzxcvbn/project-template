@@ -1,3 +1,4 @@
+
 export const getUserData = (username: string, userAvatar: string, objectNumber?: number) => {
     let userFindContent: string | null = ''
     const userContent: unknown = { username, userAvatar, objectNumber }
@@ -14,22 +15,13 @@ export const getUserData = (username: string, userAvatar: string, objectNumber?:
     }
 }
 
-export const getFavoritesAmount = () => {
-    let userFindAmount: string | null = '';
-    const userAmount: unknown = '{}'
-    try {
-        userFindAmount = localStorage.getItem('favoritesAmount')
-    } catch {
-        'err'
-    }
-    if (userFindAmount) {
-        const amount = JSON.parse(userFindAmount)
-        if (amount === userAmount) {
-            return amount
-        }
+export function getFavoritesAmount() {
+    let data: any = ''
+    data = localStorage.getItem('favoriteItems')
+    if (data) {
+        data = JSON.parse(data)
     } else {
-        console.log('not amount');
-        localStorage.setItem('favoritesAmount', JSON.stringify(userAmount))
-        return userAmount
+        data = []
     }
+    return data.length
 }

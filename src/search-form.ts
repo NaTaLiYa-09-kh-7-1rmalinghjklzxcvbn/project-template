@@ -9,8 +9,6 @@ export function renderSearchFormBlock() {
   const dateNow = moment().format('YYYY-MM-DD');
 
   const lastDay = moment().startOf('month').add(2, 'months').add(-1, 'days').format('YYYY-MM-DD')
-  // const arrday = document.querySelector<HTMLInputElement>("check-in-date")
-  // console.log(arrday);
 
   renderBlock(
     'search-form-block',
